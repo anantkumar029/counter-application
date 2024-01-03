@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        .counterDiv {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .counterDiv1 {
+            background-color: blueviolet;
+            color: white;
+            padding: 1em 4em;
+            border: 3px solid black;
+            border-radius: 15px;
+        }
+
+        .counterDiv1 h1 {
+            font-size: 40px;
+        }
+
+        .counterDiv1 button {
+            font-size: 18px;
+            margin: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="counterDiv">
+        <div class="counterDiv1">
+            <h1>Counter Application</h1>
+            <div>
+                <button class="decrement" onclick="decrement()">Decrement By 1</button>
+                <button class="result">0</button>
+                <button class="increment" onclick="increment()">Increment By 1</button>
+            </div>
+            <button class="reset" onclick="reset()">Reset</button>
+        </div>
+    </section>
+
+    <!-- JavaScript for the Counter Application -->
+    <script>
+        let decrementBtn = document.querySelector(".decrement");
+        let incrementBtn = document.querySelector(".increment");
+        let resetBtn = document.querySelector(".reset");
+        let resultBtn = document.querySelector(".result");
+        let counterValue = 0;
+
+        // Prevent multiple clicks from firing rapidly
+        let isClicked = false;
+
+        // Function to decrement counter value
+        function decrement() {
+            if (!isClicked) {
+                counterValue--;
+                resultBtn.textContent = counterValue;
+                isClicked = true;
+            }
+            setTimeout(() => {
+                isClicked = false;
+            }, 500); // Reset flag after a short delay
+        }
+
+        // Function to increment counter value
+        function increment() {
+            if (!isClicked) {
+                counterValue++;
+                resultBtn.textContent = counterValue;
+                isClicked = true;
+            }
+            setTimeout(() => {
+                isClicked = false;
+            }, 500); // Reset flag after a short delay
+        }
+
+        // Function to reset the result value
+        function reset() {
+            counterValue = 0;
+            resultBtn.textContent = counterValue;
+        }
+
+        decrementBtn.addEventListener("click", decrement);
+        incrementBtn.addEventListener("click", increment);
+        resultBtn.addEventListener("click", reset);
+
+
+    </script>
+</body>
+
+</html>
